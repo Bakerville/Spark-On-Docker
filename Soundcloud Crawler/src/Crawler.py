@@ -97,7 +97,10 @@ class Crawler():
                 self.data["users_name"].append(name.text)
                 
                 self.data["users_link"].append(link)
-                logger.info("SUCCESS ", link)
+
+                message = link
+
+                logger.info(message)
 
                 if(len(self.data["users_name"])==50):
                     return self.data

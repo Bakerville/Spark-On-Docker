@@ -15,7 +15,7 @@ logging.basicConfig(
 # Creating an object
 logger = logging.getLogger(__name__)
 
-key_word = ["a","b","c","d"]
+key_word = ["a","b","c","d", "e"]
 
 crawler = Crawler()
 
