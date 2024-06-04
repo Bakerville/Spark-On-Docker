@@ -1,7 +1,7 @@
 
 import string
-import requests
-from selenium import webdriver 
+#import requests
+from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -10,11 +10,25 @@ from bs4 import BeautifulSoup
 import time
 import json
 import re
-import pandas as pd 
+import pandas as pd
+import sys
+import logging
 from datetime import datetime, timedelta 
-import pandas as pd 
+import pandas as pd
 
 column_name = ["users_name","num_followers","num_tracks", "users_link"]
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  SUCCESS %(message)s",
+
+    handlers=[
+        logging.FileHandler("./log/crawler.log"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+# Creating an object
+logger = logging.getLogger(__name__)
 
 class Crawler():
     def __init__(self) -> None:
@@ -56,39 +70,46 @@ class Crawler():
         data_list = soup.find_all('li', class_='searchList__item')
         
         for i in data_list:
-            
-            name = i.find('a', class_='sc-link-dark sc-link-primary')
-            
-            follower_track = i.find_all('span', class_='sc-visuallyhidden')
-            
-            if(follower_track == []):
-                self.data["num_followers"].append('0')
-                self.data["num_tracks"].append('0')
-            elif (len(follower_track)==1):
-                if('track' in follower_track[0]):
-                    self.data["num_tracks"].append(follower_track[1].text)
-                    self.data["num_followers"].append('0')
-                else:
-                    self.data["num_followers"].append(follower_track[0].text)
-                    self.data["num_tracks"].append('0')
-            else:
-                self.data["num_tracks"].append(follower_track[1].text)
-                self.data["num_followers"].append(follower_track[0].text)
+        
+            try:
+                name = i.find('a', class_='sc-link-dark sc-link-primary')
                 
-            profile_link = name.get('href')
-            
-            link = 'https://soundcloud.com' + profile_link
-            
-            self.data["users_name"].append(name.text)
-            
-            self.data["users_link"].append(link)
+                follower_track = i.find_all('span', class_='sc-visuallyhidden')
+                
+                if(follower_track == []):
+                    self.data["num_followers"].append('0')
+                    self.data["num_tracks"].append('0')
+                elif (len(follower_track)==1):
+                    if('track' in follower_track[0]):
+                        self.data["num_tracks"].append(follower_track[1].text)
+                        self.data["num_followers"].append('0')
+                    else:
+                        self.data["num_followers"].append(follower_track[0].text)
+                        self.data["num_tracks"].append('0')
+                else:
+                    self.data["num_tracks"].append(follower_track[1].text)
+                    self.data["num_followers"].append(follower_track[0].text)
+                    
+                profile_link = name.get('href')
+                
+                link = 'https://soundcloud.com' + profile_link
+                
+                self.data["users_name"].append(name.text)
+                
+                self.data["users_link"].append(link)
+                logger.info("SUCCESS ", link)
 
-            if(len(self.data["users_name"])==50):
-                return self.data
+                if(len(self.data["users_name"])==50):
+                    return self.data
+            
+            except Exception as err:
+                logger.error(err)
             
     def save(self):
         df = pd.DataFrame(self.data)
         df.to_csv("./data/Soundcloud_User.csv", index=True)
+
+
 
 
         

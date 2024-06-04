@@ -11,7 +11,7 @@ source_schema = StructType([
         StructField("NUMBER_TRACKS", IntegerType(), False),
         StructField("LINK", StringType(), False)])
         
-FILEPATH = "Soundcloud_User.csv"
+FILEPATH = "./data/Soundcloud_User.csv"
 
 USERNAME = dotenv_values(".env").get("USERNAME")
 HOST = dotenv_values(".env").get("HOST")
@@ -25,7 +25,7 @@ try:
 # Extract data from local and create a spark session
         IngestProcess = ExtractLoadFiletoDB()
 
-        IngestProcess.createSparkSession(masterName="local[1]", appName="ETLSpark.com", driverPos="./jars/sqljdbc42.jar")
+        IngestProcess.createSparkSession(masterName="local[4]", appName="ETLSpark.com", driverPos="./jars/sqljdbc42.jar")
 
         IngestProcess.extractSourceFile(filePath=FILEPATH, delimiter=",", schema=source_schema)
 

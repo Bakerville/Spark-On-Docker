@@ -1,8 +1,21 @@
 #from dotenv import dotenv_values, load_dotenv
 from Crawler import *
-#from multiprocessing import Pool
+from multiprocessing import Pool
+import os
 
-key_word = ["a", "b"]
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  SUCCESS %(message)s",
+
+    handlers=[
+        logging.FileHandler("./log/crawler.log"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+# Creating an object
+logger = logging.getLogger(__name__)
+
+key_word = ["a","b","c","d"]
 
 crawler = Crawler()
 
@@ -17,9 +30,11 @@ for word in key_word:
 try:
     df = pd.DataFrame(crawler.data)
     df.to_csv("./data/Soundcloud_User.csv")
-    print("Crawling Success")
+    logger.info("Crawling Sucessfully")
 except Exception as err:
     print("Problem raise: ", err)
+
+
 
 
 

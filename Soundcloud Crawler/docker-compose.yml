@@ -5,3 +5,5 @@ services:
     image: crawl-img
     volumes:
       - ./data/:/code/data/
+      - ./log/:/code/log/
+      - ../Pyspark ETL/data/:/code/data/
