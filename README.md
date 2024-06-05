@@ -8,7 +8,7 @@ This folder contains code to run a crawler that get data from Soundcloud.com and
 
 There are steps to run app:
 - <code>docker build -t crawler-img .</code>
-- <code>docker run crawler-img</code>
+- <code>docker-compose -f docker-compose.yml up</code>
 
 When the contain stopped and the screen display "Crawling Successful", the data folder including Soundcloud_User.csv will exist. The file after crawling is mounted to <code>../Pyspark ETL/data/</code>
 

@@ -1,11 +1,11 @@
 #from dotenv import dotenv_values, load_dotenv
-from Crawler import *
+from src.Crawler import *
 from multiprocessing import Pool
 import os
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s  SUCCESS %(message)s",
+    format="%(asctime)s %(message)s",
 
     handlers=[
         logging.FileHandler("./log/crawler.log"),
@@ -15,7 +15,7 @@ logging.basicConfig(
 # Creating an object
 logger = logging.getLogger(__name__)
 
-key_word = ["a","b","c","d", "e"]
+key_word = ["a","b","c","d", "e","f","k"]
 
 crawler = Crawler()
 
@@ -32,7 +32,7 @@ try:
     df.to_csv("./data/Soundcloud_User.csv")
     logger.info("Crawling Sucessfully")
 except Exception as err:
-    print("Problem raise: ", err)
+    print("ERROR  ", err)
 
 
 

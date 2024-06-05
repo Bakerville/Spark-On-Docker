@@ -2,7 +2,7 @@ version: "3.9"
 services:
   crawler:
     build: .
-    image: crawl-img
+    image: crawler-img
     volumes:
       - ./data/:/code/data/
       - ./log/:/code/log/

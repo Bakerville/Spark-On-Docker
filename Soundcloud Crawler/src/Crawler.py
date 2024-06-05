@@ -36,6 +36,7 @@ class Crawler():
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--disable-logging')
 
         self.driver = webdriver.Chrome(service=Service(
             ChromeDriverManager().install()),options=chrome_options)
@@ -57,11 +58,11 @@ class Crawler():
         
         for i in range(0,50):
             
-            time.sleep(1)
+            time.sleep(2)
         
             self.driver.execute_script('window.scrollTo(0,document.body.scrollHeight)')
         
-        time.sleep(1)
+        time.sleep(2)
         
         page_source = self.driver.page_source
         
@@ -101,12 +102,11 @@ class Crawler():
                 message = link
 
                 logger.info(message)
-
-                if(len(self.data["users_name"])==50):
-                    return self.data
             
             except Exception as err:
                 logger.error(err)
+                
+        return self.data
             
     def save(self):
         df = pd.DataFrame(self.data)
