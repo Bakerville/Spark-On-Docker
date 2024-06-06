@@ -26,4 +26,5 @@ RUN ./my-env/bin/pip install -r requirements.txt
 COPY ./ ./
 
 CMD ["./my-env/bin/python3", "main.py"]
-#CMD ["sleep", "infinity"]  
+
+

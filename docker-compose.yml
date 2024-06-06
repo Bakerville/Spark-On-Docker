@@ -1,17 +1,12 @@
-
-version: '3.9'
+version: "3.9"
 services:
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Thuy2001
-      POSTGRES_DB: postgres
-    ports:
-      - "8500:5432"
+  crawler:
+    build: .
+    image: crawler-img
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
-
-volumes:
-  postgresql_data:
-    driver: local
+      - ./Soundcloud Crawler/log/:/code/log/
+      - ./Pyspark ETL/data/:/code/data/
+  ETL:
+    image: spark-etl
+    depends_on:
+      - crawler

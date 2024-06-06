@@ -1,0 +1,11 @@
+2024-06-06 08:28:21,370  SUCCESS ====== WebDriver manager ======
+2024-06-06 08:28:21,472  SUCCESS Get LATEST chromedriver version for google-chrome
+2024-06-06 08:28:21,666  SUCCESS Get LATEST chromedriver version for google-chrome
+2024-06-06 08:28:21,831  SUCCESS There is no [linux64] chromedriver "125.0.6422.141" for browser google-chrome "125.0.6422" in cache
+2024-06-06 08:28:21,832  SUCCESS Get LATEST chromedriver version for google-chrome
+2024-06-06 08:28:22,188  SUCCESS WebDriver version 125.0.6422.141 selected
+2024-06-06 08:28:22,190  SUCCESS Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip
+2024-06-06 08:28:22,191  SUCCESS About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip
+2024-06-06 08:28:22,347  SUCCESS Driver downloading response is 200
+2024-06-06 08:28:23,260  SUCCESS Get LATEST chromedriver version for google-chrome
+2024-06-06 08:28:23,518  SUCCESS Driver has been saved in cache [/root/.wdm/drivers/chromedriver/linux64/125.0.6422.141]
