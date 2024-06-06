@@ -1,5 +1,8 @@
 # Pyspark and Selenium on Docker
 ---------
+
+I updated docker-compose for these two processes. Run <code>docker-compose up</code>, all of data will be collected and loaded into Azure SQL Server.
+
 **1. Selenium on Docker**
 
 <img title="a title" alt="Alt text" src="/images/Selenium_Folder.png">
@@ -36,6 +39,5 @@ When all of data in Soundcloud_User.csv tranformed and loaded to database, the n
 
 <em>Data in  after ETL</em>
 
-**3. Update**
 
-I updated docker-compose for these two processes. Run <code>docker-compose up</code>, all of data will be collected and loaded into Azure SQL Server 
+
