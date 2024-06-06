@@ -1,7 +1,7 @@
 # Pyspark and Selenium on Docker
 ---------
 
-***I updated docker-compose for these two processes. Run <code>docker-compose up</code>, all of data will be collected and loaded into Azure SQL Server.***
+*I updated docker-compose for these two processes. Run <code>docker-compose up</code>, all of data will be collected and loaded into Azure SQL Server.*
 
 ---------
 
