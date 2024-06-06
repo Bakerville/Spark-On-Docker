@@ -3,6 +3,8 @@
 
 I updated docker-compose for these two processes. Run <code>docker-compose up</code>, all of data will be collected and loaded into Azure SQL Server.
 
+---------
+
 **1. Selenium on Docker**
 
 <img title="a title" alt="Alt text" src="/images/Selenium_Folder.png">
