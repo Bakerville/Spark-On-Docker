@@ -7,6 +7,9 @@ volumes:
   shared-workspace:
     name: "hadoop-distributed-file-system"
     driver: local
+networks:
+  spark-network:
+    driver: bridge
 services:
   jupyterlab:
     image: andreper/jupyterlab:3.0.0-spark-3.0.0
@@ -14,8 +17,10 @@ services:
     ports:
       - 8888:8888
       - 4040:4040
-    volumes:
+    volumes: 
       - ./shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
   spark-master:
     image: andreper/spark-master:3.0.0
     container_name: spark-master
