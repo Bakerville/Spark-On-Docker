@@ -1,5 +1,5 @@
-from packages.ExtractLoad import ExtractLoadFiletoDB
-from packages.Transform import Transform
+from packages.extract_load import ExtractLoadFiletoDB
+from packages.transform import Transform
 from dotenv import load_dotenv, dotenv_values
 from pyspark.sql.types import IntegerType, StringType, DoubleType, StructField, StructType
 
